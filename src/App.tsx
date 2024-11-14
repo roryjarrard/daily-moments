@@ -4,6 +4,8 @@ import { IonReactRouter } from '@ionic/react-router';
 import { home as homeIcon, settings as settingsIcon } from 'ionicons/icons';
 import HomePage from './pages/HomePage';
 import SettingsPage from './pages/SettingsPage';
+import EntryPage from './pages/EntryPage';
+
 
 const App: React.FC = () => {
   return (
@@ -11,16 +13,19 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route path="/home" exact={true}>
+            <Route path="/entries" exact={true}>
               <HomePage />
+            </Route>
+            <Route path="/entries/:id" exact={true}>
+              <EntryPage />
             </Route>
             <Route path="/settings" exact={true}>
               <SettingsPage />
             </Route>
-            <Redirect exact path="/" to="/home" />
+            <Redirect exact path="/" to="/entries" />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="home" href="/home">
+            <IonTabButton tab="home" href="/entries">
               <IonIcon icon={homeIcon} />
               <IonLabel>Home</IonLabel>
             </IonTabButton>
