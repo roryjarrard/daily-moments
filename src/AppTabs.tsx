@@ -1,15 +1,14 @@
 import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { Redirect, Route } from 'react-router-dom';
 import { home as homeIcon, settings as settingsIcon } from 'ionicons/icons';
+import { useAuth } from './auth';
 import HomePage from './pages/HomePage';
 import SettingsPage from './pages/SettingsPage';
 import EntryPage from './pages/EntryPage';
 
-interface Props {
-  loggedIn: boolean;
-}
 
-const AppTabs: React.FC<Props> = ({ loggedIn }) => {
+const AppTabs: React.FC = () => {
+  const { loggedIn } = useAuth();
   if (!loggedIn) {
     return <Redirect to="/login" />;
   }
